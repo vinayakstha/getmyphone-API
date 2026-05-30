@@ -6,6 +6,7 @@ import path from "path";
 
 import authRoutes from "./routes/auth.route";
 import userRoutes from "./routes/user.route";
+import ratingRoutes from "./routes/rating.route";
 
 dotenv.config();
 
@@ -19,13 +20,12 @@ app.use(cors(corsOption));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use("/uploads", express.static(path.join(__dirname, "../../uploads")));
-const uploadsPath = path.resolve(__dirname, "../uploads"); // adjust based on where uploads is
+const uploadsPath = path.resolve(__dirname, "../uploads");
 app.use("/uploads", express.static(uploadsPath));
 
-//user routes
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/rating", ratingRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   return res

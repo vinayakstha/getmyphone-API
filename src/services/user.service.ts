@@ -57,8 +57,8 @@ export class UserService {
     }
 
     const updateData: any = {};
-    if (data.fullName) updateData.firstName = data.fullName;
-    if (data.email) updateData.firstName = data.email;
+    if (data.fullName) updateData.fullName = data.fullName;
+    if (data.email) updateData.email = data.email;
     if (data.phoneNumber) updateData.phoneNumber = data.phoneNumber;
     if (data.profilePicture) updateData.profilePicture = data.profilePicture;
 
@@ -76,11 +76,9 @@ export class UserService {
 
   async getCurrentUser(userId: string) {
     const user = await userRepository.getCurrentUser(userId);
-
     if (!user) {
       throw new HttpError(404, "User not found");
     }
-
     return user;
   }
 
@@ -92,7 +90,7 @@ export class UserService {
     if (!user) {
       throw new HttpError(404, "User not found");
     }
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "1h" }); // 1 hour expiry
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "1h" });
     const resetLink = `${CLIENT_URL}/reset-password?token=${token}`;
     const html = `<p>Click <a href="${resetLink}">here</a> to reset your password. This link will expire in 1 hour.</p>`;
     await sendEmail(user.email, "Password Reset", html);
