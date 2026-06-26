@@ -6,7 +6,7 @@ export const UserSchema = z.object({
   fullName: z.string(),
   phoneNumber: z.string().min(10),
   password: z.string().min(6),
-  profilePicture: z.string(),
+  profilePicture: z.string().optional(),
   role: z.enum(["user", "admin"]).default("user"),
   rating: UserRatingSchema.default({ average: 0, count: 0 }),
 });

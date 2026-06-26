@@ -7,6 +7,7 @@ import path from "path";
 import authRoutes from "./routes/auth.route";
 import userRoutes from "./routes/user.route";
 import ratingRoutes from "./routes/rating.route";
+import categoryRoutes from "./routes/category.route";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use("/uploads", express.static(uploadsPath));
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/rating", ratingRoutes);
+app.use("/api/category", categoryRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   return res
