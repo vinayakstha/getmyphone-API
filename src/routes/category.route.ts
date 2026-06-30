@@ -9,7 +9,7 @@ const router = Router();
 router.post(
   "/",
   authorizedMiddleware,
-  uploads.single("image"),
+  uploads.category.single("image"),
   categoryController.createCategory,
 );
 router.get("/", categoryController.getAllCategories);
@@ -17,7 +17,7 @@ router.get("/:id", categoryController.getCategoryById);
 router.put(
   "/:id",
   authorizedMiddleware,
-  uploads.single("image"),
+  uploads.category.single("image"),
   categoryController.updateCategory,
 );
 router.delete("/:id", authorizedMiddleware, categoryController.deleteCategory);
