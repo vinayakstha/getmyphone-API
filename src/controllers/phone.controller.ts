@@ -28,7 +28,9 @@ export class PhoneController {
           .json({ success: false, message: z.prettifyError(parsedData.error) });
       }
 
-      const photo = req.file ? `/uploads/${req.file.filename}` : undefined;
+      const photo = req.file
+        ? `/uploads/phones/${req.file.filename}`
+        : undefined;
       const phone = await phoneService.createPhone(
         sellerId,
         parsedData.data,
@@ -165,7 +167,9 @@ export class PhoneController {
           .json({ success: false, message: z.prettifyError(parsedData.error) });
       }
 
-      const photo = req.file ? `/uploads/${req.file.filename}` : undefined;
+      const photo = req.file
+        ? `/uploads/phones/${req.file.filename}`
+        : undefined;
       const updatedPhone = await phoneService.updatePhone(
         id as string,
         sellerId,

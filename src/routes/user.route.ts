@@ -9,7 +9,7 @@ const router = Router();
 router.put(
   "/update-profile",
   authorizedMiddleware,
-  uploads.single("profilePicture"),
+  uploads.profile.single("profilePicture"),
   userController.updateProfile,
 );
 

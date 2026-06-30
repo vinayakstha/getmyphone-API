@@ -9,7 +9,7 @@ const router = Router();
 router.post(
   "/",
   authorizedMiddleware,
-  uploads.single("photo"),
+  uploads.phone.single("photo"),
   phoneController.createPhone,
 );
 router.get("/", phoneController.getAllPhones);
@@ -24,7 +24,7 @@ router.get("/:id", phoneController.getPhoneById);
 router.put(
   "/:id",
   authorizedMiddleware,
-  uploads.single("photo"),
+  uploads.phone.single("photo"),
   phoneController.updatePhone,
 );
 router.delete("/:id", authorizedMiddleware, phoneController.deletePhone);
