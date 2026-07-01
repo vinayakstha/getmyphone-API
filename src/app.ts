@@ -9,6 +9,7 @@ import userRoutes from "./routes/user.route";
 import ratingRoutes from "./routes/rating.route";
 import categoryRoutes from "./routes/category.route";
 import phoneRoutes from "./routes/phone.route";
+import savedRoutes from "./routes/saved.route";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/rating", ratingRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/phone", phoneRoutes);
+app.use("/api/saved", savedRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   return res
